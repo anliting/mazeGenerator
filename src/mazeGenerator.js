@@ -1,0 +1,33 @@
+var
+    select_style=document.getElementById('select_style'),
+    input_width=document.getElementById('input_width'),
+    input_height=document.getElementById('input_height'),
+    input_scaleFactor=document.getElementById('input_scaleFactor'),
+    button_generate=document.getElementById('button_generate'),
+    div_output=document.getElementById('div_output')
+module.repository.UnionFindNode=module.shareImport('UnionFindNode.js')
+module.repository.anlitingCppAlgorithm=
+    module.shareImport('anlitingCppAlgorithm.js')
+;(async()=>{
+    let[
+        generateAStyleMaze,
+        generateBStyleMaze,
+    ]=await Promise.all([
+        module.shareImport('generateAStyleMaze.js'),
+        module.shareImport('generateBStyleMaze.js'),
+    ])
+    button_generate.onclick=e=>{
+        var
+            width=parseInt(input_width.value,10),
+            height=parseInt(input_height.value,10),
+            scaleFactor=parseInt(input_scaleFactor.value,10),
+            generators=[
+                generateAStyleMaze,
+                generateBStyleMaze,
+            ]
+        div_output.innerHTML=''
+        div_output.appendChild(
+            generators[select_style.value](width,height,scaleFactor).canvas
+        )
+    }
+})()

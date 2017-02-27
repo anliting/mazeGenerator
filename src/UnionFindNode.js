@@ -9,3 +9,4 @@ UnionFindNode.prototype.find=function(){
 UnionFindNode.prototype.union=function(n){
     n.find().parent=this.find()
 }
+UnionFindNode
