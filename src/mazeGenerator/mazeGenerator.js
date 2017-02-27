@@ -25,9 +25,11 @@ module.repository.anlitingCppAlgorithm=
                 generateAStyleMaze,
                 generateBStyleMaze,
             ]
+        let start=new Date
         div_output.innerHTML=''
         div_output.appendChild(
             generators[select_style.value](width,height,scaleFactor).canvas
         )
+        console.log(new Date-start)
     }
 })()
