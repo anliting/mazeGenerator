@@ -1,12 +1,9 @@
 function Ui(){
     this.node=document.createElement('div')
-    this.styleSelect=createStyleSelect()
     this.widthInput=createSizeInput()
     this.heightInput=createSizeInput()
     this.scaleFactorInput=createScaleFactorInput()
     this.outputDiv=createOutputDiv()
-    this.node.appendChild(document.createTextNode('Style: '))
-    this.node.appendChild(this.styleSelect)
     this.node.appendChild(document.createTextNode('Width: '))
     this.node.appendChild(this.widthInput)
     this.node.appendChild(document.createTextNode('Height: '))
@@ -15,14 +12,6 @@ function Ui(){
     this.node.appendChild(this.scaleFactorInput)
     this.node.appendChild(createButton(this))
     this.node.appendChild(this.outputDiv)
-}
-function createStyleSelect(){
-    let n=document.createElement('select')
-    n.innerHTML=`
-        <option value=0>A</option>
-        <option value=1>B</option>
-`
-    return n
 }
 function createSizeInput(){
     let n=document.createElement('input')
@@ -51,7 +40,7 @@ function createButton(ui){
                 scaleFactor=parseInt(ui.scaleFactorInput.value,10)
             ui.outputDiv.innerHTML=''
             ui.outputDiv.appendChild(
-                generators[ui.styleSelect.value](width,height,scaleFactor)
+                generators[0](width,height,scaleFactor)
             )
         })
     }
