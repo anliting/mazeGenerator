@@ -1,8 +1,8 @@
 importScripts('module.js')
 let
-    UnionFindNode=module.import('UnionFindNode.js'),
-    anlitingCppAlgorithm=module.import('cppAlgorithm.js'),
-    stream=module.import('stream.js')
+    UnionFindNode=          module.import('UnionFindNode.js'),
+    anlitingCppAlgorithm=   module.import('cppAlgorithm.js'),
+    stream=                 module.import('stream.js')
 onmessage=e=>stream(
     1e3,
     generateAStyleMazeData.apply(null,e.data),
