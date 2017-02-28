@@ -28,10 +28,7 @@
                         1,
                         1
                     )
-        return{
-            mazeData,
-            canvas
-        }
+        return canvas
     }
     function generateBStyleMazeData(width,height){
         var

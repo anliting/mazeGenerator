@@ -14,7 +14,7 @@ module.shareImport('../mazeGenerator/mazeGenerator.js').then(generators=>{
         let start=new Date
         div_output.innerHTML=''
         div_output.appendChild(
-            generators[select_style.value](width,height,scaleFactor).canvas
+            generators[select_style.value](width,height,scaleFactor)
         )
         console.log(new Date-start)
     }
