@@ -10,5 +10,5 @@
     UnionFindNode.prototype.union=function(n){
         n.find().parent=this.find()
     }
-    module.export=UnionFindNode
+    return UnionFindNode
 })()

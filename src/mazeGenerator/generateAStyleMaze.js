@@ -1,14 +1,19 @@
-importScripts('module.js')
+onmessage=e=>{let module=eval(e.data)
 let
     UnionFindNode=          module.import('UnionFindNode.js'),
-    anlitingCppAlgorithm=   module.import('cppAlgorithm.js'),
+    cppAlgorithm=           module.import('cppAlgorithm.js'),
     stream=                 module.import('stream.js')
-onmessage=e=>stream(
-    1e3,
-    generateAStyleMazeData.apply(null,e.data),
-    postMessage,
-    close
-)
+module.onmessage=async m=>{
+    [UnionFindNode,cppAlgorithm,stream]=await Promise.all([
+        UnionFindNode,cppAlgorithm,stream
+    ])
+    stream(
+        1e3,
+        generateAStyleMazeData.apply(null,m),
+        postMessage,
+        close
+    )
+}
 function*generateAStyleMazeData(width,height){
     var
         countOfVertices=width*height,
@@ -19,7 +24,7 @@ function*generateAStyleMazeData(width,height){
         nodes[i]=new UnionFindNode
     for(let i=0;i<countOfEdges;i++)
         sorting[i]=i
-    anlitingCppAlgorithm.random_shuffle(sorting)
+    cppAlgorithm.random_shuffle(sorting)
     for(let e of sorting){
         let v,w
         if(e<(width-1)*height){
@@ -35,4 +40,5 @@ function*generateAStyleMazeData(width,height){
             yield{v,w}
         }
     }
+}
 }

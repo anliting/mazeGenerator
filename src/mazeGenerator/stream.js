@@ -1,4 +1,4 @@
-module.export=(size,iterator,flush,end)=>{
+((size,iterator,flush,end)=>{
     let buffer=[]
     for(let v of iterator){
         buffer.push(v)
@@ -9,4 +9,4 @@ module.export=(size,iterator,flush,end)=>{
     }
     flush(buffer)
     end()
-}
+})

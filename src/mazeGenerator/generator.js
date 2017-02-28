@@ -12,8 +12,7 @@ function generateAStyleMaze(width,height,scaleFactor){
     for(let i=0;i<width;i++)
         for(let j=0;j<height;j++)
             context.fillRect(2*i+1,2*j+1,1,1)
-    let worker=
-        new Worker(`${module.pathPrefix}module/generateAStyleMaze.js`)
+    let worker=module.worker('generateAStyleMaze.js')
     worker.postMessage([width,height])
     worker.onmessage=e=>{
         let data=e.data

@@ -5,7 +5,7 @@
             {let t=a[i];a[i]=a[j];a[j]=t}
         })
     }
-    module.export={
+    return{
         random_shuffle,
     }
 })()
