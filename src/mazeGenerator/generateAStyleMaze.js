@@ -14,15 +14,13 @@ function generateAStyleMaze(width,height,scaleFactor){
             context.fillRect(2*i+1,2*j+1,1,1)
     let worker=
         new Worker(`${module.pathPrefix}module/generateAStyleMaze.js`)
-    worker.postMessage([width,height,scaleFactor])
+    worker.postMessage([width,height])
     worker.onmessage=e=>{
         let data=e.data
         for(let e of data)
             context.fillRect(
-                vertexIdToXy(e.v).x+
-                    vertexIdToXy(e.w).x+1,
-                vertexIdToXy(e.v).y+
-                    vertexIdToXy(e.w).y+1,
+                vertexIdToXy(e.v).x+vertexIdToXy(e.w).x+1,
+                vertexIdToXy(e.v).y+vertexIdToXy(e.w).y+1,
                 1,
                 1
             )
