@@ -11,11 +11,11 @@ module.shareImport('../mazeGenerator/mazeGenerator.js').then(generators=>{
             width=parseInt(input_width.value,10),
             height=parseInt(input_height.value,10),
             scaleFactor=parseInt(input_scaleFactor.value,10)
-        let start=new Date
+        //let start=new Date
         div_output.innerHTML=''
         div_output.appendChild(
             generators[select_style.value](width,height,scaleFactor)
         )
-        console.log(new Date-start)
+        //console.log(new Date-start)
     }
 })
