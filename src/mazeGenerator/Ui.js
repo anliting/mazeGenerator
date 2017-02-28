@@ -32,17 +32,18 @@ function createOutputDiv(){
 function createButton(ui){
     let n=document.createElement('button')
     n.textContent='Generate'
-    n.onclick=e=>{
-        module.shareImport('generators.js').then(generators=>{
-            var
-                width=parseInt(ui.widthInput.value,10),
-                height=parseInt(ui.heightInput.value,10),
-                scaleFactor=parseInt(ui.scaleFactorInput.value,10)
-            ui.outputDiv.innerHTML=''
-            ui.outputDiv.appendChild(
-                generators[0](width,height,scaleFactor)
-            )
-        })
+    n.onclick=async e=>{
+        n.disabled=true
+        let
+            width=parseInt(ui.widthInput.value,10),
+            height=parseInt(ui.heightInput.value,10),
+            scaleFactor=parseInt(ui.scaleFactorInput.value,10),
+            generator=await module.shareImport('generator.js')
+        ui.outputDiv.innerHTML=''
+        ui.outputDiv.appendChild(
+            generator(width,height,scaleFactor)
+        )
+        n.disabled=false
     }
     return n
 }
