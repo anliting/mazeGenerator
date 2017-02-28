@@ -26,7 +26,6 @@ function generateAStyleMaze(width,height,scaleFactor){
                 1,
                 1
             )
-        worker.terminate()
     }
     return canvas
     function vertexIdToXy(v){

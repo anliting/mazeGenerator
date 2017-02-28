@@ -1,11 +1,9 @@
 importScripts('module.js')
 let
     UnionFindNode=module.import('UnionFindNode.js'),
-    anlitingCppAlgorithm=module.import('anlitingCppAlgorithm.js')
-onmessage=e=>{
-    let[width,height]=e.data
-    postMessage(Array.from(generateBStyleMazeData(width,height)))
-}
+    anlitingCppAlgorithm=module.import('cppAlgorithm.js')
+onmessage=e=>
+    postMessage(Array.from(generateBStyleMazeData.apply(null,e.data)))
 function generateBStyleMazeData(width,height){
     var
         result=[],

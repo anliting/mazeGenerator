@@ -1,11 +1,14 @@
 importScripts('module.js')
 let
     UnionFindNode=module.import('UnionFindNode.js'),
-    anlitingCppAlgorithm=module.import('anlitingCppAlgorithm.js')
-onmessage=e=>{
-    let[width,height]=e.data
-    postMessage(Array.from(generateAStyleMazeData(width,height)))
-}
+    anlitingCppAlgorithm=module.import('cppAlgorithm.js'),
+    stream=module.import('stream.js')
+onmessage=e=>stream(
+    1e3,
+    generateAStyleMazeData.apply(null,e.data),
+    postMessage,
+    close
+)
 function*generateAStyleMazeData(width,height){
     var
         countOfVertices=width*height,
