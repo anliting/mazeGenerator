@@ -15,7 +15,9 @@ module.repository.npm.events.then(EventEmmiter=>{
             canvas=document.createElement('canvas'),
             context=canvas.getContext('2d'),
             countOfVertices=width*height,
-            res=new EventEmmiter
+            res=new EventEmmiter,
+            worker=module.worker('generateAStyleMaze.js')
+        worker.postMessage([width,height])
         canvas.width=scaleFactor*(2*width+1)
         canvas.height=scaleFactor*(2*height+1)
         context.scale(scaleFactor,scaleFactor)
@@ -25,8 +27,6 @@ module.repository.npm.events.then(EventEmmiter=>{
         for(let i=0;i<width;i++)
             for(let j=0;j<height;j++)
                 context.fillRect(2*i+1,2*j+1,1,1)
-        let worker=module.worker('generateAStyleMaze.js')
-        worker.postMessage([width,height])
         worker.onmessage=e=>{
             let doc=e.data
             if(doc.function=='chunk')

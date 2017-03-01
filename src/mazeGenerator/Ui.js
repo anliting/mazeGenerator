@@ -1,8 +1,11 @@
 function Ui(){
     this.node=document.createElement('div')
     this.widthInput=createSizeInput()
+    this.widthInput.value=32
     this.heightInput=createSizeInput()
+    this.heightInput.value=24
     this.scaleFactorInput=createScaleFactorInput()
+    this.scaleFactorInput.value=8
     this.outputDiv=createOutputDiv()
     this.node.appendChild(document.createTextNode('Width: '))
     this.node.appendChild(this.widthInput)
@@ -16,13 +19,11 @@ function Ui(){
 }
 function createSizeInput(){
     let n=document.createElement('input')
-    n.value=16
     n.style.width='64px'
     return n
 }
 function createScaleFactorInput(){
     let n=document.createElement('input')
-    n.value=8
     n.style.width='64px'
     return n
 }
