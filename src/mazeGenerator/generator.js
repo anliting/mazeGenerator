@@ -37,8 +37,10 @@ module.repository.npm.events.then(EventEmmiter=>{
                         1,
                         1
                     )
-            if(doc.function=='end')
+            if(doc.function=='end'){
+                worker.terminate()
                 res.emit('end')
+            }
         }
         res.canvas=canvas
         return res

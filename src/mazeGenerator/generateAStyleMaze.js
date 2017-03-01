@@ -10,13 +10,8 @@ onmessage=e=>{let module=eval(e.data)
         stream(
             1e3,
             generateAStyleMazeData.apply(null,m),
-            c=>{
-                postMessage({function:'chunk',chunk:c})
-            },
-            ()=>{
-                postMessage({function:'end'})
-                close()
-            }
+            c=>postMessage({function:'chunk',chunk:c}),
+            _=>postMessage({function:'end'})
         )
     }
     function*generateAStyleMazeData(width,height){
