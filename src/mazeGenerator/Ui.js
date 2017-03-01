@@ -41,11 +41,12 @@ function createButton(ui){
             height=parseInt(ui.heightInput.value,10),
             scaleFactor=parseInt(ui.scaleFactorInput.value,10),
             generator=await module.shareImport('generator.js')
+        let res=generator(width,height,scaleFactor)
         ui.outputDiv.innerHTML=''
-        ui.outputDiv.appendChild(
-            generator(width,height,scaleFactor)
-        )
-        n.disabled=false
+        ui.outputDiv.appendChild(res.canvas)
+        res.once('end',()=>{
+            n.disabled=false
+        })
     }
     return n
 }
