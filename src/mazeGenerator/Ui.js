@@ -6,10 +6,11 @@ function Ui(){
     this.outputDiv=createOutputDiv()
     this.node.appendChild(document.createTextNode('Width: '))
     this.node.appendChild(this.widthInput)
-    this.node.appendChild(document.createTextNode('Height: '))
+    this.node.appendChild(document.createTextNode(' Height: '))
     this.node.appendChild(this.heightInput)
-    this.node.appendChild(document.createTextNode('Scale factor: '))
+    this.node.appendChild(document.createTextNode(' Scale factor: '))
     this.node.appendChild(this.scaleFactorInput)
+    this.node.appendChild(document.createTextNode(' '))
     this.node.appendChild(createButton(this))
     this.node.appendChild(this.outputDiv)
 }
@@ -27,6 +28,7 @@ function createScaleFactorInput(){
 }
 function createOutputDiv(){
     let n=document.createElement('div')
+    n.style.marginTop='8px'
     return n
 }
 function createButton(ui){
