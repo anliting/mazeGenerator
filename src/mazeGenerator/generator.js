@@ -1,4 +1,4 @@
-function generateAStyleMaze(width,height,scaleFactor){
+function generator(width,height,scaleFactor){
     let
         canvas=document.createElement('canvas'),
         context=canvas.getContext('2d'),
@@ -32,4 +32,4 @@ function generateAStyleMaze(width,height,scaleFactor){
         }
     }
 }
-generateAStyleMaze
+generator
