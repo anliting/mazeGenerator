@@ -1,3 +1,4 @@
+var generator=module.shareImport('generator.js')
 function Ui(){
     this.node=document.createElement('div')
     this.widthInput=createSizeInput()
@@ -36,18 +37,22 @@ function createButton(ui){
     let n=document.createElement('button')
     n.textContent='Generate'
     n.onclick=async e=>{
-        n.disabled=true
         let
-            width=parseInt(ui.widthInput.value,10),
-            height=parseInt(ui.heightInput.value,10),
-            scaleFactor=parseInt(ui.scaleFactorInput.value,10),
-            generator=await module.shareImport('generator.js')
+            width=+ui.widthInput.value,
+            height=+ui.heightInput.value,
+            scaleFactor=+ui.scaleFactorInput.value
+        if(!(
+            0<width&&width==~~width&&
+            0<height&&height==~~height&&
+            0<scaleFactor
+        ))
+            return
+        n.disabled=true
+        generator=await generator
         let res=generator(width,height,scaleFactor)
         ui.outputDiv.innerHTML=''
         ui.outputDiv.appendChild(res.canvas)
-        res.once('end',()=>{
-            n.disabled=false
-        })
+        res.once('end',()=>n.disabled=false)
     }
     return n
 }
