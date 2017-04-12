@@ -1,15 +1,20 @@
 onmessage=e=>{let module=eval(e.data)
-    let
-        UnionFindNode=          module.import('UnionFindNode.js'),
-        cppAlgorithm=           module.import('cppAlgorithm.js'),
-        stream=                 module.import('stream.js')
+    let[
+        UnionFindNode,
+        cppAlgorithm,
+        stream,
+    ]=[
+        module.import('generateAStyleMaze/UnionFindNode.js'),
+        module.import('generateAStyleMaze/cppAlgorithm.js'),
+        module.import('generateAStyleMaze/stream.js'),
+    ]
     module.onmessage=async m=>{
         [UnionFindNode,cppAlgorithm,stream]=await Promise.all([
             UnionFindNode,cppAlgorithm,stream
         ])
         stream(
             1e3,
-            generateAStyleMazeData.apply(null,m),
+            generateAStyleMazeData(...m),
             c=>postMessage({function:'chunk',chunk:c}),
             _=>postMessage({function:'end'})
         )
@@ -28,11 +33,11 @@ onmessage=e=>{let module=eval(e.data)
         for(let e of sorting){
             let v,w
             if(e<(width-1)*height){
-                v=width*Math.floor(e/(width-1))+e%(width-1)
+                v=width*~~(e/(width-1))+e%(width-1)
                 w=v+1
             }else{
                 e-=(width-1)*height
-                v=width*Math.floor(e/width)+e%width
+                v=width*~~(e/width)+e%width
                 w=v+width
             }
             if(nodes[v].find()!=nodes[w].find()){

@@ -47,7 +47,7 @@ module.repository.npm.events.then(EventEmmiter=>{
         function vertexIdToXy(v){
             return{
                 x:v%width,
-                y:Math.floor(v/width),
+                y:~~(v/width),
             }
         }
     }
