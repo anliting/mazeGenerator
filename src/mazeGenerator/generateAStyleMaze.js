@@ -15,16 +15,16 @@ onmessage=e=>{let module=eval(e.data)
         )
     }
     function*generateAStyleMazeData(width,height){
-        var
-            countOfVertices=width*height,
-            countOfEdges=2*width*height-width-height,
-            sorting=new Array(countOfEdges),
-            nodes=new Array(countOfVertices)
+        let
+            countOfVertices=    width*height,
+            countOfEdges=       2*width*height-width-height,
+            sorting=            Array(countOfEdges),
+            nodes=              Array(countOfVertices)
         for(let i=0;i<countOfVertices;i++)
             nodes[i]=new UnionFindNode
         for(let i=0;i<countOfEdges;i++)
             sorting[i]=i
-        cppAlgorithm.random_shuffle(sorting)
+        sorting=[...cppAlgorithm.random_shuffle(sorting)]
         for(let e of sorting){
             let v,w
             if(e<(width-1)*height){
