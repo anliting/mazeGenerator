@@ -1,7 +1,7 @@
 ;(async()=>{
     if(!module.repository.althea){
         let
-            altheaRepoUrl='https://gitcdn.link/cdn/anliting/althea/9b7cb54f880eae43d4567909b18b17f1f4442b5c/src/AltheaServer/HttpServer/files/lib/repository.js',
+            altheaRepoUrl='https://gitcdn.link/cdn/anliting/althea/9b7cb54f880eae43d4567909b18b17f1f4442b5c/src/AltheaServer/HttpServer/files/lib/repository.static.js',
             altheaRepo=await module.importByPath(altheaRepoUrl,{mode:1})
         module.repository.althea=altheaRepo.althea
     }
