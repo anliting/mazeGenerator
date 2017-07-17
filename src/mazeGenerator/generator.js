@@ -30,13 +30,10 @@ module.repository.npm.events.then(EventEmmiter=>{
         worker.onmessage=e=>{
             let doc=e.data
             if(doc.function=='chunk')
-                for(let e of doc.chunk)
-                    context.fillRect(
-                        vertexIdToXy(e.v).x+vertexIdToXy(e.w).x+1,
-                        vertexIdToXy(e.v).y+vertexIdToXy(e.w).y+1,
-                        1,
-                        1
-                    )
+                for(let e of doc.chunk){
+                    let a=vertexIdToXy(e.v),b=vertexIdToXy(e.w)
+                    context.fillRect(a.x+b.x+1,a.y+b.y+1,1,1)
+                }
             if(doc.function=='end'){
                 worker.terminate()
                 res.emit('end')
