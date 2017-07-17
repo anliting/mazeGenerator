@@ -49,8 +49,7 @@
             this.disabled=true
             generator=await generator
             let res=generator(width,height,scaleFactor)
-            ui.outputDiv.innerHTML=''
-            ui.outputDiv.appendChild(res.canvas)
+            dom(ui.outputDiv,{innerHTML:''},res.canvas)
             res.once('end',()=>this.disabled=false)
         }})
     }
