@@ -9,17 +9,25 @@
             `${moduleNode}/events.js`
         )
 }
-module.repository.npm.events.then(EventEmmiter=>{
+;(async()=>{
+    let[
+        EventEmmiter,
+        dom,
+    ]=await Promise.all([
+        module.repository.npm.events,
+        module.repository.althea.dom,
+    ])
     function generator(width,height,scaleFactor){
         let
-            canvas=document.createElement('canvas'),
+            canvas=dom('canvas',{
+                width:scaleFactor*(2*width+1),
+                height:scaleFactor*(2*height+1),
+            }),
             context=canvas.getContext('2d'),
             countOfVertices=width*height,
             res=new EventEmmiter,
             worker=module.worker('generateAStyleMaze.js')
         worker.postMessage([width,height])
-        canvas.width=scaleFactor*(2*width+1)
-        canvas.height=scaleFactor*(2*height+1)
         context.scale(scaleFactor,scaleFactor)
         context.fillStyle='black'
         context.fillRect(0,0,2*width+1,2*height+1)
@@ -49,4 +57,4 @@ module.repository.npm.events.then(EventEmmiter=>{
         }
     }
     return generator
-})
+})()
