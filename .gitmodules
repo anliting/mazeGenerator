@@ -1,0 +1,6 @@
+[submodule "lib/doe"]
+	path = lib/doe
+	url = https://github.com/anliting/doe.git
+[submodule "lib/EventEmitter"]
+	path = lib/EventEmitter
+	url = https://github.com/anliting/EventEmitter.git

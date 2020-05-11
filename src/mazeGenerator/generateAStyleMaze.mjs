@@ -1,24 +1,14 @@
-onmessage=e=>{let module=eval(e.data)
-    let[
-        UnionFindNode,
-        cppAlgorithm,
-        stream,
-    ]=[
-        module.import('generateAStyleMaze/UnionFindNode.js'),
-        module.import('generateAStyleMaze/cppAlgorithm.js'),
-        module.import('generateAStyleMaze/stream.js'),
-    ]
-    module.onmessage=async m=>{
-        [UnionFindNode,cppAlgorithm,stream]=await Promise.all([
-            UnionFindNode,cppAlgorithm,stream
-        ])
-        stream(
-            1e3,
-            generateAStyleMazeData(...m),
-            c=>postMessage({function:'chunk',chunk:c}),
-            _=>postMessage({function:'end'})
-        )
-    }
+import UnionFindNode from'./generateAStyleMaze/UnionFindNode.mjs'
+import cppAlgorithm from'./generateAStyleMaze/cppAlgorithm.mjs'
+import stream from'./generateAStyleMaze/stream.mjs'
+onmessage=e=>{
+console.log(e.data)
+    stream(
+        1e3,
+        generateAStyleMazeData(...e.data),
+        c=>postMessage({function:'chunk',chunk:c}),
+        _=>postMessage({function:'end'})
+    )
     function*generateAStyleMazeData(width,height){
         let
             countOfVertices=    width*height,

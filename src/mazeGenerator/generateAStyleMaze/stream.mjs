@@ -1,4 +1,4 @@
-((size,iterator,flush,end)=>{
+export default(size,iterator,flush,end)=>{
     let buffer=[]
     for(let v of iterator){
         buffer.push(v)
@@ -9,4 +9,4 @@
     }
     flush(buffer)
     end()
-})
+}

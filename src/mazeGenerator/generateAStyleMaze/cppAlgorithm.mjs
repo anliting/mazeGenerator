@@ -6,6 +6,6 @@ function*random_shuffle(a){
         a[i]=a[n-1]
     }
 }
-;({
+export default{
     random_shuffle,
-})
+}
